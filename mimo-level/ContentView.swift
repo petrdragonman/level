@@ -169,10 +169,10 @@ struct ContentView: View {
         }
         .statusBarHidden(true)
         .animation(.easeInOut(duration: 0.35), value: motion.isFlat)
-        .onChange(of: phase) { p in
+        .onChange(of: phase) {_, p in
             if p == .active { motion.start() } else { motion.stop() }
         }
-        .onChange(of: motion.isLevel) { now in
+        .onChange(of: motion.isLevel) {_, now in
             if now && !wasLevel {
                 UIImpactFeedbackGenerator(style: .medium).impactOccurred()
             }
